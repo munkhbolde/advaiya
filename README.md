@@ -6,5 +6,8 @@ A prototype for continues scrolling for a list UI.
 
 ### Run application
   ```make run```
-  
+
+### Run test
+  ```make ci-test```
+
 You can check deployed version [here](http://cont-scroll.appspot.com/)
