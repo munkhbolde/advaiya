@@ -13,7 +13,7 @@ def home(x):
 
 @route('/api/#load')
 def get_new(x):
-    page = x.request['page']
+    page = x.request['page'] or 0
     url = 'https://newsapi.org/v2/everything?q=google'
     key = 'a23d75001f4a4f37a42b1c41bb2abc10'
     url = '%s&apiKey=%s&pageSize=12&page=%s' % (url, key, page)
