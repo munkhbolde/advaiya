@@ -9,6 +9,10 @@ run:
 		"node-sass-watcher static/app.css.sass --command 'make sass-to-css file=<input>'" \
 		"dev_appserver.py . --port=9090 --host=home # nosync"
 
+ci-test:
+	@flake8 --exclude=natrix.py
+	@python test.py
+
 sass-to-css:
 	@node-sass $(file) `echo $(file) | sed 's#\.sass$$##'` \
 		--indented-syntax                                    \

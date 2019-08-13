@@ -11,6 +11,7 @@ def home(x):
     version = 1
     x.render('index.html', version=version)
 
+
 @route('/api/#load')
 def get_new(x):
     page = x.request['page'] or 0
@@ -19,7 +20,9 @@ def get_new(x):
     url = '%s&apiKey=%s&pageSize=12&page=%s' % (url, key, page)
 
     result = urlfetch.fetch(url=url, method=urlfetch.GET)
-    x.response(result.content, encode='json', code=result.status_code)
+    x.response.code = result.status_code
+    x.response(result.content, encode='json')
+
 
 @route(':error-404')
 def error_404(x):
