@@ -8,7 +8,7 @@ app.config['session-key'] = 'a8e423319c7788900e4f415f8d283a28'
 
 @route('/')
 def home(x):
-    version = 1
+    version = 4
     x.render('index.html', version=version)
 
 
