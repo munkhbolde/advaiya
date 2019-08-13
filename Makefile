@@ -5,4 +5,16 @@ init:
 	npm install --global postcss-cli autoprefixer
 
 run:
-	@concurrently "dev_appserver.py . --port=9090 --host=home # nosync"
+	@concurrently \
+		"node-sass-watcher static/app.css.sass --command 'make sass-to-css file=<input>'" \
+		"dev_appserver.py . --port=9090 --host=home # nosync"
+
+sass-to-css:
+	@node-sass $(file) `echo $(file) | sed 's#\.sass$$##'` \
+		--indented-syntax                                    \
+		--output-style expanded                              \
+		--include-path `echo $(file) | sed 's#/[^/]\+$$##'`  \
+		--include-path `npm root --global`
+	@postcss `echo $(file) | sed 's#\.sass$$##'`   \
+		--output `echo $(file) | sed 's#\.sass$$##'` \
+		--use autoprefixer --no-map
