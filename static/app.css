@@ -90,6 +90,14 @@ a:hover {
   margin-top: 1rem;
 }
 
+@media only screen and (min-width: 1440px) {
+  .container {
+    margin: 1.5rem auto;
+    width: 1152px;
+    max-width: 1152px;
+  }
+}
+
 @media only screen and (min-width: 980px) {
   .container {
     margin: 1.5rem auto;

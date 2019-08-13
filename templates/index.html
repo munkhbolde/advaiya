@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Continues Scrolling</title>
-  <link rel="stylesheet" href="/static/app.css">
+  <link rel="stylesheet" href="/static/app.css?{{ version }}">
   #:endfold
 </head>
 
@@ -28,7 +28,8 @@
   </div>
 
   #: scripts
-  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/jquery.js?{{ version }}"></script>
+  <script src="/static/app.js?{{ version }}"></script>
   #:endfold
 </body>
 </html>
