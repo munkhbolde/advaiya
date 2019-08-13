@@ -1,0 +1,120 @@
+@font-face
+  font-family: PT Sans
+  src: url('./fonts/PT-Sans.eot')
+  src: url('./fonts/PT-Sans.woff2') format('woff2'), url('./fonts/PT-Sans.woff') format('woff'), url('./fonts/PT-Sans.ttf') format('truetype'), url('./fonts/PT-Sans.svg') format('svg')
+  font-weight: 400
+  font-style: normal
+
+
+$desktop: 'only screen and (min-width: 980px)'
+$standard: 'only screen and (min-width: 600px)'
+$tablet: 'only screen and (max-width: 979px)'
+$mobile: 'only screen and (max-width: 599px)'
+$primary-color: #21abc7 !default
+
+html, body
+  margin: 0
+  padding: 0
+
+  width: 100%
+  height: 100%
+  min-height: 100%
+
+  font-family: PT Sans
+  line-height: 1.6
+  box-sizing: border-box
+  background-color: #fff
+
+a
+  width: 100%
+  display: inline-block
+  color: $primary-color
+  text-decoration: none
+
+a:hover
+  text-decoration: underline
+
+*, *::before, *::after
+  box-sizing: inherit
+
+
+.hero
+  color: #fff
+  background-color: $primary-color
+
+  .hero-body
+    padding-top: 2rem
+    padding-bottom: 1rem
+
+  .hero-body .container
+    margin: 0 auto
+
+  .title
+    margin: 0
+    font-size: 2rem
+    font-weight: 600
+    line-height: 1.125
+    color: #fff
+
+.title
+  font-size: 24px
+  font-weight: 900
+  line-height: 1.3
+
+.title:not(:last-child)
+  margin-bottom: 0
+
+.picture
+  display: block
+
+.picture img
+  width: 100%
+  height: auto
+  max-width: 100%
+
+  display: block
+
+.caption
+  color: #666
+  font-size: 13px
+
+.columns
+  margin-top: 1rem
+  flex-wrap: wrap
+
+.columns .column
+  margin-top: 1rem
+
+
+@media #{$desktop}
+  .container
+    margin: 1.5rem auto
+    width: 960px
+    max-width: 960px
+
+  .columns .column
+    width: 33.33%
+
+@media #{$standard}
+  .columns
+    margin: 0 -1rem
+    display: flex
+
+  .columns .column
+    padding: 1rem
+    flex: none
+
+@media #{$tablet}
+  body
+    padding: 0 1rem
+
+  .hero
+    margin: 0 -1rem
+    padding: 0 1rem
+
+  .columns .column
+    width: 50%
+
+@media #{$mobile}
+  .columns .column
+    width: 100%

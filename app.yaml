@@ -1,0 +1,27 @@
+application: cont-scroll  # nosync
+version: live
+
+runtime: python27
+api_version: 1
+threadsafe: false
+
+handlers:
+- url: /static
+  static_dir: static
+  expiration: 7d
+  http_headers:
+    Vary: Accept-Encoding
+
+- url: /.*
+  script: app.app
+
+libraries:
+- { name: jinja2,     version: "2.6"  }
+- { name: markupsafe, version: "0.15" } # required for jinja2
+
+skip_files:
+- ^(.*/)?\..*$         # Dot-prefixed unix hidden files
+- ^(.*/)?(#.*#)|(.*~)  # Editor temp files
+- ^(.*/)?.*\.py[co]    # Environment temp files
+- ^(.*/)?.*\.sass$     # CSS sources
+- ^_IGNORED_/.*        # Ignored directory
