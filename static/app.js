@@ -37,7 +37,7 @@ load_data()
 
 $(window).scroll(() => {
   const position = $(window).scrollTop() + $(window).height()
-  if (position < $(document).height()) {
+  if (position+100 < $(document).height()) {
     return false
   }
 
