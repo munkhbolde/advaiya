@@ -13,6 +13,9 @@ ci-test:
 	@flake8 --exclude=natrix.py
 	@python test.py
 
+deploy:
+	@gcloud app deploy
+
 sass-to-css:
 	@node-sass $(file) `echo $(file) | sed 's#\.sass$$##'` \
 		--indented-syntax                                    \
