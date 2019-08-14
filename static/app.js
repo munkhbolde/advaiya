@@ -1,7 +1,8 @@
 let page = 0
 let can_load = true
+
 //:1 Load Data
-const load_data = () => {
+const load_data = (position) => {
   const request = {
     url: '/api/',
     type: 'POST',
@@ -10,7 +11,6 @@ const load_data = () => {
       page: page + 1
     }
   }
-
   $.ajax(request).done(response => {
     const result = $.parseJSON(response)
     //:2 append news on news feed
@@ -30,11 +30,14 @@ const load_data = () => {
     })
     // endfold2
     page += 1
-    can_load = true
-  }).fail(() => {
-    con_load = true
-    console.log('upgrade required for NEWS API')
+    $('html, body').stop().animate({scrollTop: position+15}, 1000)
+  }).fail((error) => {
+    if (error.status == 427)
+      console.log('Upgrade required for NEWS API')
+    else
+      console.log('Bad request')
   })
+  setTimeout(() => can_load = true, 500)
 }
 // endfold
 
@@ -45,10 +48,8 @@ $(window).scroll(() => {
   if (position+100 < $(document).height()) {
     return false
   }
-
   if (can_load) {
     can_load = false
-    load_data()
-    $('html, body').stop().animate({scrollTop: position+15}, 1000)
+    load_data(position)
   }
 })
