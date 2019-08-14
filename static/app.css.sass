@@ -75,6 +75,7 @@ a:hover
   width: 100%
   height: auto
   max-width: 100%
+  border-radius: 4px
 
   display: block
 
@@ -86,8 +87,8 @@ a:hover
   margin-top: 1rem
   flex-wrap: wrap
 
-.columns .column
-  margin-top: 1rem
+.columns .column .title
+  margin: 0.75rem 0
 
 
 @media #{$wide}
@@ -128,3 +129,6 @@ a:hover
 @media #{$mobile}
   .columns .column
     width: 100%
+
+  .columns .column:not(:first-child)
+    margin-top: 1.5rem
