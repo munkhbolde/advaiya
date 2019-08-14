@@ -3,6 +3,8 @@ init:
 	npm install --global --unsafe-perm node-sass
 	npm install --global node-sass-watcher
 	npm install --global postcss-cli autoprefixer
+	pip install --upgrade flake8
+	pip install --upgrade pyttest webtest
 
 run:
 	@concurrently \

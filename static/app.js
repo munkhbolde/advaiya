@@ -1,22 +1,22 @@
 let page = 0
 let can_load = true
-
 //:1 Load Data
-let load_data = () => {
-  const data = {
-    ':method': 'load',
-    page: (page + 1)
+const load_data = () => {
+  const request = {
+    url: '/api/',
+    type: 'POST',
+    data: {
+      ':method': 'load',
+      page: page + 1
+    }
   }
 
-  $.post('/api/', data).done((data) => {
-    data = $.parseJSON(data)
-    if (data.status == "error") {
-      return
-    }
-    page += 1
-    $.each(data.articles, (i, news) => {
-      let date = new Date(news.publishedAt)
-      let element = `
+  $.ajax(request).done(response => {
+    const result = $.parseJSON(response)
+    //:2 append news on news feed
+    $.each(result.articles, (i, news) => {
+      const date = new Date(news.publishedAt)
+      const item = `
         <div class="column">
           <a class="picture" href="${news.url}">
             <img src="${news.urlToImage}" alt="${news.description}">
@@ -26,9 +26,14 @@ let load_data = () => {
           </div>
           <div class="caption">${date}</div>
         </div>`
-      $('.columns').append(element)
+      $('#news-feed').append(item)
     })
+    // endfold2
+    page += 1
     can_load = true
+  }).fail(() => {
+    con_load = true
+    console.log('upgrade required for NEWS API')
   })
 }
 // endfold
