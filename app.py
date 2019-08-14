@@ -6,6 +6,7 @@ from google.appengine.api import urlfetch
 app.config['session-key'] = 'a8e423319c7788900e4f415f8d283a28'
 API_KEY = 'a23d75001f4a4f37a42b1c41bb2abc10'
 
+
 @route('/')
 def home(x):
     version = 7

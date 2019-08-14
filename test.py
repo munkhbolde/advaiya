@@ -63,6 +63,7 @@ if __name__ == '__main__':
     argv = [
         __file__,
         '-p', 'no:cacheprovider',  # disable cache
+        '-p', 'no:warnings',       # disable cache
         '--quiet',                 # disable verbose report
         '--exitfirst',             # stop/exit on first fail
         '--capture=no',            # `print` immediately.
