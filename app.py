@@ -8,7 +8,7 @@ API_KEY = 'a23d75001f4a4f37a42b1c41bb2abc10'
 
 @route('/')
 def home(x):
-    version = 6
+    version = 7
     x.render('index.html', version=version)
 
 

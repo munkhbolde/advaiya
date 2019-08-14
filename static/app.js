@@ -32,7 +32,7 @@ const load_data = (position) => {
     page += 1
     $('html, body').stop().animate({scrollTop: position+15}, 1000)
   }).fail((error) => {
-    if (error.status == 427)
+    if (error.status == 426)
       console.log('Upgrade required for NEWS API')
     else
       console.log('Bad request')
