@@ -16,7 +16,7 @@ def home(x):
 @route('/api/#load')
 def get_new(x):
     page = x.request['page'] or 0
-    url = 'https://newsapi.org/v2/everything?q=google'
+    url = 'https://newsapi.org/v2/everything?q=google&sortBy=popularity'
     url = '%s&apiKey=%s&pageSize=12&page=%s' % (url, API_KEY, page)
 
     result = urlfetch.fetch(url=url, method=urlfetch.GET)
