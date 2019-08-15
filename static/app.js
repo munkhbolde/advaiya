@@ -11,6 +11,7 @@ const load_data = (position) => {
       page: page + 1
     }
   }
+
   $.ajax(request).done(response => {
     const result = $.parseJSON(response)
     //:2 append news on news feed
@@ -37,6 +38,7 @@ const load_data = (position) => {
     else
       console.log('Bad request')
   })
+
   setTimeout(() => can_load = true, 500)
 }
 // endfold
@@ -48,6 +50,7 @@ $(window).scroll(() => {
   if (position+100 < $(document).height()) {
     return false
   }
+
   if (can_load) {
     can_load = false
     load_data(position)

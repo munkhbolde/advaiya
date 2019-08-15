@@ -9,12 +9,12 @@ API_KEY = 'a23d75001f4a4f37a42b1c41bb2abc10'
 
 @route('/')
 def home(x):
-    version = 9
+    version = 10
     x.render('index.html', version=version)
 
 
 @route('/api/#load')
-def get_new(x):
+def get_news(x):
     page = x.request['page'] or 0
     url = 'https://newsapi.org/v2/everything?q=google&sortBy=popularity'
     url = '%s&apiKey=%s&pageSize=12&page=%s' % (url, API_KEY, page)
