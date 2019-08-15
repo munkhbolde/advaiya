@@ -1,5 +1,5 @@
 ## [Advaiya](https://www.advaiya.com/)
-A prototype for continues scrolling for a list UI.
+A prototype for continuous scrolling for a list UI.
 
 ### Install dependencies
   ```$ make init```
