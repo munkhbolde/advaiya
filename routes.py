@@ -12,31 +12,38 @@ urlpatterns = [
 
 CONVERTERS = {
     'int': '[0-9]+',
-    'slug': '[a-z]+'
+    'slug': '[a-z]+',
 }
+
+
+def converter(pattern):
+    for con in CONVERTERS:
+        pattern = re.sub('<' + con + ':(\\w+>)', r'(?P<\1' + CONVERTERS[con] + ')', pattern)
+    return pattern
 
 
 def dispatcher(url):
     print '---------------------------------------'
     url = url[1:]
-    for p, view in urlpatterns:
-        # additional for custom converter
-        for c in CONVERTERS:
-            p = re.sub( '<'+c+':(\w+>)', r'(?P<\1' + CONVERTERS[c] + ')', p)
+    for pattern, view in urlpatterns:
+        # used for converting custom converter
+        pattern = converter(pattern)
 
-        # check matching
-        match = re.match(p, url);
+        # checking pattern match
+        match = re.match(pattern, url)
         if match is None:
             continue
 
-        print url, ' -> ', p
+        print url, ' -> ', pattern
         print 'view:', view, match.groupdict()
-        break
+        return
+    print 'URL Mismatch: ' + url
 
 
 dispatcher('/test')
 dispatcher('/articles/2003/')
 dispatcher('/articles/2010/')
+dispatcher('/articles/2010/year/archive')
 dispatcher('/articles/2010/20/')
 dispatcher('/articles/2010/12/')
 dispatcher('/articles/2010/12/test/')
